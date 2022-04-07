@@ -9,7 +9,7 @@ const typeDefs = gql `
     type Thought {
         _id: ID
         thoughtText: String
-        createAt: String
+        createdAt: String
         username: String
         reactionCount: Int
         reactions: [Reaction]
@@ -32,7 +32,8 @@ const typeDefs = gql `
 
     type Query {
         users: [User]
-        user(usnername: String!): User
+        user(username: String!): User
+        
         thoughts(username: String): [Thought]
         thought(_id: ID!): Thought
     }
