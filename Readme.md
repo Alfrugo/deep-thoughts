@@ -20,3 +20,32 @@ Two main components in GraphQL know as the schemas:
 
     Resolvers: are the functions we connect to each query or mutation to perform CRUD.
 
+
+# Mutation query examples
+
+## hard coded basic structure of a mutation
+
+mutation {
+  addUser(username:"tester", password:"test12345", email:"test@test.com") {
+    _id
+    username
+    email
+  }
+}
+
+## same mutation query with variables wrapped around the function
+
+mutation addUser($username: String!, $password: String!, $email: String!) {
+  addUser(username: $username, password: $password, email: $email) {
+    _id
+    username
+    email
+  }
+}
+Variables heders...
+{
+  "username": "tester2",
+  "password": "test12345",
+  "email": "test2@test.com"
+}
+
