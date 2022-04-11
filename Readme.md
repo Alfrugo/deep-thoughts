@@ -25,27 +25,39 @@ Two main components in GraphQL know as the schemas:
 
 ## hard coded basic structure of a mutation
 
-mutation {
-  addUser(username:"tester", password:"test12345", email:"test@test.com") {
-    _id
-    username
-    email
-  }
-}
+    mutation {
+        addUser(username:"tester", password:"test12345", email:"test@test.com") {
+        _id
+        username
+        email
+    }
+    }
 
 ## same mutation query with variables wrapped around the function
 
-mutation addUser($username: String!, $password: String!, $email: String!) {
-  addUser(username: $username, password: $password, email: $email) {
-    _id
-    username
-    email
-  }
-}
-Variables heders...
-{
-  "username": "tester2",
-  "password": "test12345",
-  "email": "test2@test.com"
-}
+    mutation addUser($username: String!, $password: String!, $email: String!) {
+    addUser(username: $username, password: $password, email: $email) {
+        _id
+        username
+        email
+    }
+    }
+    Variables heders...
+    {
+        "username": "tester2",
+        "password": "test12345",
+        "email": "test2@test.com"
+    }
 
+## using Jason Web Token (JWT) a regular login session: 
+
+    {
+        "username": "lernantino",
+        "email": "lernantino@test.com"
+    }
+
+would look like this: 
+
+    eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imxlcm5hbnRpbm8iLCJlbWFpbCI6Imxlcm5hbnRpbm9AdGVzdC5jb20ifQ.YEGu_cfAk7nBUM6la-GZGIr2zuugY3y4qLqlKybjCug
+
+This way we can save the session on the front end and decrease the server-side reources needed to keep authentication alive. JWT also doesn't depend on cookies. 
